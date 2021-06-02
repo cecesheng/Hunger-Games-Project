@@ -14,6 +14,7 @@ public class Tribute
 		surviving = survive;
 		food = f;
 		district = d;
+		dead = false;
 	}
 	
 	public int getFighting()
