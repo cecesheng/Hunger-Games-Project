@@ -7,13 +7,11 @@ public class Day
 {
 	private Tribute player;
 	private ArrayList<Tribute> tributeList;
-	private boolean alive;
 	
 	public Day(ArrayList<Tribute> list)
 	{
 		tributeList = list;
 		player = tributeList.get(tributeList.size()-1);
-		alive = true;
 	}
 	
 	public void choices()
@@ -39,7 +37,7 @@ public class Day
 		}
 		else
 		{
-			System.out.println("Enter a valid choice.");
+			System.out.println("Please enter a valid choice.");
 		}
 	}
 	
@@ -53,22 +51,22 @@ public class Day
 		Tribute randTribute = tributeList.get(randNum);
 		if(player.getFighting()>randTribute.getFighting())
 		{
-			alive = true;
+			player.updateStatus(false); 
 		}
 		else if(player.getFighting()<randTribute.getFighting())
 		{
-			alive = false;
+			player.updateStatus(true);
 		}
 		else
 		{
 			double val = Math.random();
 			if(val>0.5)
 			{
-				alive = true;
+				player.updateStatus(false);
 			}
 			else
 			{
-				alive = false;
+				player.updateStatus(true);
 			}
 		}
 	}

@@ -31,9 +31,13 @@ public class Feast extends Day
 		{
 			fight();
 		}
-		else
+		else if(choice==4)
 		{
 			//haven't written a method to run away yet
+		}
+		else
+		{
+			System.out.println("Please enter a valid game choice.");
 		}
 	}
 }

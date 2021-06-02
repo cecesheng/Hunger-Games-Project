@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 public class HungerGamesRunner 
 {
-private ArrayList<Tribute> tributeList;
-private boolean dead;
+	private ArrayList<Tribute> tributeList;
+
 	public HungerGamesRunner()
 	{
-		dead = false;
 		tributeList = new ArrayList<Tribute>();
 		for (int i = 0; i < 11; i++)
 		{
