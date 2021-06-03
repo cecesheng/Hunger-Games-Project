@@ -7,13 +7,11 @@ public class Day
 {
 	private Tribute player;
 	private ArrayList<Tribute> tributeList;
-	private boolean alive;
 	
 	public Day(ArrayList<Tribute> list)
 	{
 		tributeList = list;
 		player = tributeList.get(tributeList.size()-1);
-		alive = true;
 	}
 	
 	public void choices()
@@ -31,7 +29,7 @@ public class Day
 		}
 		else if(choice==2)
 		{
-			//haven't written the search for food method yet
+			food();
 		}
 		else if(choice==3)
 		{
@@ -39,8 +37,54 @@ public class Day
 		}
 		else
 		{
-			System.out.println("Enter a valid choice.");
+			System.out.println("Please enter a valid choice.");
 		}
+	}
+	
+	/**
+	 * Updates alive based on whether the player is still alive or not and whether they found food or not
+	 */
+	public void food()
+	{
+		double val = Math.random();
+		if(val < 0.2)
+		{
+			fight();
+		}
+		
+		if (player.getStatus() == false)
+		{
+			if (player.getSurviving() > 8)
+			{
+				System.out.println("You find a lot of food.");
+				player.changeFood(3);
+			}
+			else if (player.getSurviving() > 5)
+			{
+				System.out.println("You find some food.");
+				player.changeFood(2);
+			}
+			else if (player.getSurviving() > 2)
+			{
+				System.out.println("You find a little bit of food.");
+				player.changeFood(1);
+			}
+			else
+			{
+				val = Math.random();
+				if (val < 0.5)
+				{
+					System.out.println("You eat poison berries and die.");
+					player.updateStatus(true);
+				}
+				else
+				{
+					System.out.println("You don't find any food.");
+				}
+			}
+		}
+		
+		System.out.println("Food Level: " + player.getFood() + "/10");
 	}
 	
 	/**
@@ -51,24 +95,31 @@ public class Day
 	{
 		int randNum = (int)Math.random()*tributeList.size();
 		Tribute randTribute = tributeList.get(randNum);
+		System.out.println("You get into a fight with the tribute from District " + randTribute.getDistrict() + ".");
 		if(player.getFighting()>randTribute.getFighting())
 		{
-			alive = true;
+			System.out.println("You kill the tribute from District " + randTribute.getDistrict() + ".");
+			player.updateStatus(false); 
+			randTribute.updateStatus(true);
 		}
 		else if(player.getFighting()<randTribute.getFighting())
 		{
-			alive = false;
+			System.out.println("The tribute from District " + randTribute.getDistrict() + " kills you.");
+			player.updateStatus(true);
 		}
 		else
 		{
 			double val = Math.random();
 			if(val>0.5)
 			{
-				alive = true;
+				System.out.println("You kill the tribute from District " + randTribute.getDistrict() + ".");
+				player.updateStatus(false);
+				randTribute.updateStatus(true);
 			}
 			else
 			{
-				alive = false;
+				System.out.println("The tribute from District " + randTribute.getDistrict() + " kills you.");
+				player.updateStatus(true);
 			}
 		}
 	}
@@ -87,6 +138,9 @@ public class Day
 		{
 			fight();
 		}
+		else
+		{
+			System.out.println("You successfully hide.");
+		}
 	}
 }
-

@@ -44,17 +44,43 @@ public class Tribute
 	
 	public void addFight(int num)
 	{
-		fighting += num;
+		if(fighting+num<=10)
+		{
+			fighting += num;
+		} 
+		else
+		{
+			fighting = 10;
+		}
 	}
 	
 	public void addSurvive(int num)
 	{
-		surviving += num;
+		if(surviving+num<=10)
+		{
+			surviving += num;
+		}
+		else
+		{
+			surviving = 10;
+		}
 	}
 	
 	public void changeFood(int num)
 	{
-		food += num;
+		if(food+num<=10)
+		{
+			food += num;
+		}
+		else
+		{
+			food = 10;
+		}
+		
+		if (food == 0)
+		{
+			updateStatus(true);
+		}
 	}
 	
 	public void updateStatus(boolean dead)
@@ -62,5 +88,3 @@ public class Tribute
 		this.dead = dead;
 	}
 }
-
-

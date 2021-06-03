@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class PreGameDay extends Day
 {
-private Tribute player;
+	private Tribute player;
 
 	public PreGameDay(ArrayList<Tribute> tributeList)
 	{
@@ -16,9 +16,10 @@ private Tribute player;
 	public void choices()
 	{
 		Scanner in = new Scanner(System.in);
-		System.out.println("Fighting: " + player.getFighting());
-		System.out.println("Surviving: " + player.getSurviving());
-		System.out.println("[1] Improve Fighting Ability   [2] Improve Survival Skills");
+		System.out.println("Fighting: " + player.getFighting() + "/10");
+		System.out.println("Surviving: " + player.getSurviving() + "/10");
+		System.out.println("[1] Improve Fighting Ability");
+		System.out.println("[2] Improve Survival Ability");
 		int choice = in.nextInt();
 		if(choice==1)
 		{
