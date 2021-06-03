@@ -117,4 +117,9 @@ private Tribute player;
 			System.out.println("You successfully run away.");
 		}
 	}
+	
+	public void killTributes()
+	{
+		
+	}
 }
