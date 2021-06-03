@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Day 
@@ -39,6 +40,40 @@ public class Day
 		{
 			System.out.println("Please enter a valid choice.");
 		}
+		killTributes();
+	}
+	
+	public void killTributes()
+	{
+		int numDead = (int)(3*Math.random());
+		ArrayList<Integer> totalStats = new ArrayList<Integer>();
+		for(int i=0; i<tributeList.size(); i++)
+		{
+			Tribute chosen = tributeList.get(i);
+			totalStats.add(chosen.getFighting()+chosen.getSurviving());
+		}
+		Collections.sort(totalStats);
+		for(int i=0; i<numDead; i++)
+		{
+			int index = 0;
+			boolean found = false;
+			while(!found)
+			{
+				Tribute current = tributeList.get(index);
+				boolean status = current.getStatus();
+				int sum = current.getFighting()+current.getSurviving();
+				if(!status && sum==totalStats.get(i))
+				{
+					current.updateStatus(true);
+					found=true;
+				}
+				else
+				{
+					index++;
+				}
+			}
+		}
+		
 	}
 	
 	/**
