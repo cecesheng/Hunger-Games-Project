@@ -16,8 +16,8 @@ public class PreGameDay extends Day
 	public void choices()
 	{
 		Scanner in = new Scanner(System.in);
-		System.out.println("Fighting: " + player.getFighting());
-		System.out.println("Surviving: " + player.getSurviving());
+		System.out.println("Fighting: " + player.getFighting() + "/10");
+		System.out.println("Surviving: " + player.getSurviving() + "/10");
 		System.out.println("[1] Improve Fighting Ability");
 		System.out.println("[2] Improve Survival Ability");
 		int choice = in.nextInt();
