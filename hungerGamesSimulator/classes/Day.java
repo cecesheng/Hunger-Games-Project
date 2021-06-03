@@ -93,7 +93,7 @@ public class Day
 	 */
 	public void fight()
 	{
-		int randNum = (int)Math.random()*tributeList.size();
+		int randNum = (int)(Math.random()*tributeList.size());
 		Tribute randTribute = tributeList.get(randNum);
 		System.out.println("You get into a fight with the tribute from District " + randTribute.getDistrict() + ".");
 		if(player.getFighting()>randTribute.getFighting())

@@ -11,14 +11,6 @@ public class HungerGamesRunner
 		System.out.println("INSERT REST OF INTRO");
 		System.out.println("Your three days of training begin now. Good luck!");
 		
-		ArrayList<Gift> giftList = new ArrayList<Gift>();
-		giftList.add(new Gift("beef", 3));
-		giftList.add(new Gift("crackers", 1));
-		giftList.add(new Gift("knives", 3));
-		giftList.add(new Gift("spear", 2));
-		giftList.add(new Gift("spile", 3));
-		giftList.add(new Gift("rope", 2));
-		
 		ArrayList<Tribute> tributeList = new ArrayList<Tribute>();
 		for (int i = 0; i < 11; i++)
 		{
@@ -73,42 +65,11 @@ public class HungerGamesRunner
 		while (player.getStatus() == false && tributeList.size() > 4)
 		{
 			System.out.println("Day " + dayCount);
+			GiftList gifts = new GiftList(tributeList.get(tributeList.size() - 1));
 			double giftChance = Math.random();
 			if (giftChance < 0.15)
 			{
-				Gift given;
-				if (giftChance < 0.02)
-				{
-					given = giftList.get(0);
-					player.changeFood(given.getValue());
-				}
-				else if (giftChance < 0.05)
-				{
-					given = giftList.get(1);
-					player.changeFood(given.getValue());
-				}
-				else if (giftChance < 0.07)
-				{
-					given = giftList.get(2);
-					player.addFight(given.getValue());
-				}
-				else if (giftChance < 0.10)
-				{
-					given = giftList.get(3);
-					player.addFight(given.getValue());
-				}
-				else if (giftChance < 0.12)
-				{
-					given = giftList.get(4);
-					player.addSurvive(given.getValue());
-				}
-				else
-				{
-					given = giftList.get(5);
-					player.addSurvive(given.getValue());
-				}
-				
-				System.out.println("You received a " + given.getName() + " from your sponsor.");
+				gifts.getGift();
 			}
 			
 			Day day = new Day(tributeList);

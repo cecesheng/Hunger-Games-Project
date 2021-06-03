@@ -23,7 +23,7 @@ public class PreGameDay extends Day
 		int choice = in.nextInt();
 		if(choice==1)
 		{
-			player.addFight(3);
+			player.addFight(2);
 		}
 		else if(choice==2)
 		{
