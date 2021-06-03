@@ -87,7 +87,7 @@ public class Day
 			}
 		}
 		
-		System.out.println("Deaths from day " + dayCount);
+		System.out.println("Deaths from day " + dayCount + ":");
 		for (int i = 0; i < dead.size(); i++)
 		{
 			System.out.println("District " + dead.get(i).getDistrict());

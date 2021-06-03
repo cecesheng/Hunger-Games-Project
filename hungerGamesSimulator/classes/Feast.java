@@ -2,14 +2,17 @@ package classes;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Feast extends Day
 {	
 private Tribute player;
+private ArrayList<Tribute> tributeList;
 
 	public Feast(ArrayList<Tribute> tributeList)
 	{
 		super(tributeList);
+		this.tributeList = tributeList;
 		player = tributeList.get(tributeList.size() - 1);
 	}
 	
@@ -121,6 +124,20 @@ private Tribute player;
 	
 	public void killTributes()
 	{
+		int numDead = (int)(Math.random() * 4) + 2;
 		
+		while (numDead > 0)
+		{
+			int min = 0;
+			for (int i = 1; i < tributeList.size() - 1; i++)
+			{
+				if (tributeList.get(i).getFighting() < tributeList.get(min).getFighting())
+				{
+					min = i;
+				}
+			}
+			tributeList.get(min).updateStatus(true);
+			numDead--;
+		}
 	}
 }

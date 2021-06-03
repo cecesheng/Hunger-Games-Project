@@ -55,21 +55,12 @@ public class HungerGamesRunner
 		// bloodbath
 		Feast bloodbath = new Feast(tributeList);
 		bloodbath.bloodbathChoices();
-		System.out.println("Deaths from day 1");
-		ArrayList<Tribute> bloodbathDeaths = new ArrayList<Tribute>();
-		for (int i = 0; i < tributeList.size(); i++)
-		{
-			if (tributeList.get(i).getStatus() == true)
-			{
-				bloodbathDeaths.add(tributeList.remove(i));
-				i--;
-			}
-		}
-		for (int i = 0; i < bloodbathDeaths.size(); i++)
-		{
-			System.out.println("District " + bloodbathDeaths.get(i).getDistrict());
-		}
+		bloodbath.killTributes();
+		bloodbath.showDead(1);
 		
+		System.out.println("");
+		
+		// game days
 		int dayCount = 2;
 		while (player.getStatus() == false && tributeList.size() > 4)
 		{
@@ -87,16 +78,46 @@ public class HungerGamesRunner
 			day.killTributes();
 			day.showDead(dayCount);
 			dayCount++;
-			System.out.println("\n");
+			System.out.println("");
 		}
 		
+		// feast
 		if (player.getStatus() == false && tributeList.size() <= 4)
 		{
 			Feast feast = new Feast(tributeList);
 			feast.feastChoices();
+			feast.killTributes();
+			feast.showDead(dayCount);
 		}
 		
-		System.out.println("Game over!");
+		System.out.println("");
+		
+		while (tributeList.size() > 1)
+		{
+			dayCount++;
+			System.out.println("Day " + dayCount);
+			GiftList gifts = new GiftList(tributeList.get(tributeList.size() - 1));
+			double giftChance = Math.random();
+			if (giftChance < 0.15)
+			{
+				gifts.getGift();
+			}
+			
+			Day day = new Day(tributeList);
+			day.choices();
+			day.getHungry();
+			day.killTributes();
+			day.showDead(dayCount);
+		}
+		
+		if (player.getStatus() == false)
+		{
+			System.out.println("Congratulations! You won the Hunger Games.");
+		}
+		else
+		{
+			System.out.println("Game over!");
+		}
 		
 	}
 	
