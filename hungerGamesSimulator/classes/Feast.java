@@ -110,6 +110,7 @@ private Tribute player;
 		double val = Math.random();
 		if (val < 0.1)
 		{
+			System.out.println("You did not successfully run away and found another tribute.");
 			fight();
 		}
 		else
