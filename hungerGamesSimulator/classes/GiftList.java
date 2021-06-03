@@ -9,7 +9,7 @@ private Tribute player;
 	public GiftList(Tribute player)
 	{
 		this.player = player;
-		ArrayList<Gift> giftList = new ArrayList<Gift>();
+		giftList = new ArrayList<Gift>();
 		giftList.add(new Gift("beef", 3));
 		giftList.add(new Gift("crackers", 1));
 		giftList.add(new Gift("knives", 3));
