@@ -74,24 +74,10 @@ public class HungerGamesRunner
 			
 			Day day = new Day(tributeList);
 			day.choices();
-			
-			ArrayList<Tribute> dead = new ArrayList<Tribute>();
-			for (int i = 0; i < tributeList.size(); i++)
-			{
-				if (tributeList.get(i).getStatus() == true)
-				{
-					dead.add(tributeList.remove(i));
-					i--;
-				}
-			}
-			
-			System.out.println("Deaths from day " + dayCount);
-			for (int i = 0; i < dead.size(); i++)
-			{
-				System.out.println("District " + dead.get(i).getDistrict());
-			}
+			day.getHungry();
+			day.killTributes();
+			day.showDead(dayCount);
 			dayCount++;
-			player.changeFood(-2);
 			System.out.println("\n");
 		}
 		

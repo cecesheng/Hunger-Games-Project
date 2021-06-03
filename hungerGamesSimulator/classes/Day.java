@@ -40,7 +40,6 @@ public class Day
 		{
 			System.out.println("Please enter a valid choice.");
 		}
-		killTributes();
 	}
 	
 	public void killTributes()
@@ -74,6 +73,30 @@ public class Day
 			}
 		}
 		
+	}
+	
+	public void showDead(int dayCount)
+	{
+		ArrayList<Tribute> dead = new ArrayList<Tribute>();
+		for (int i = 0; i < tributeList.size(); i++)
+		{
+			if (tributeList.get(i).getStatus() == true)
+			{
+				dead.add(tributeList.remove(i));
+				i--;
+			}
+		}
+		
+		System.out.println("Deaths from day " + dayCount);
+		for (int i = 0; i < dead.size(); i++)
+		{
+			System.out.println("District " + dead.get(i).getDistrict());
+		}
+	}
+	
+	public void getHungry()
+	{
+		player.changeFood(-2);
 	}
 	
 	/**
