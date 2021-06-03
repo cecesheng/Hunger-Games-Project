@@ -101,6 +101,7 @@ public class Day
 			System.out.println("You kill the tribute from District " + randTribute.getDistrict() + ".");
 			player.updateStatus(false); 
 			randTribute.updateStatus(true);
+			player.updateStatus(false); 
 		}
 		else if(player.getFighting()<randTribute.getFighting())
 		{
@@ -115,6 +116,7 @@ public class Day
 				System.out.println("You kill the tribute from District " + randTribute.getDistrict() + ".");
 				player.updateStatus(false);
 				randTribute.updateStatus(true);
+				player.updateStatus(false);
 			}
 			else
 			{

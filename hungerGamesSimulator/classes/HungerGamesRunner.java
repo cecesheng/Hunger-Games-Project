@@ -76,39 +76,39 @@ public class HungerGamesRunner
 			double giftChance = Math.random();
 			if (giftChance < 0.15)
 			{
-				int num = 0;
+				Gift given;
 				if (giftChance < 0.02)
 				{
-					num = 0;
-					player.changeFood(3);
+					given = giftList.get(0);
+					player.changeFood(given.getValue());
 				}
 				else if (giftChance < 0.05)
 				{
-					num = 1;
-					player.changeFood(1);
+					given = giftList.get(1);
+					player.changeFood(given.getValue());
 				}
 				else if (giftChance < 0.07)
 				{
-					num = 2;
-					player.addFight(3);
+					given = giftList.get(2);
+					player.addFight(given.getValue());
 				}
 				else if (giftChance < 0.10)
 				{
-					num = 3;
-					player.addFight(2);
+					given = giftList.get(3);
+					player.addFight(given.getValue());
 				}
 				else if (giftChance < 0.12)
 				{
-					num = 4;
-					player.addSurvive(3);
+					given = giftList.get(4);
+					player.addSurvive(given.getValue());
 				}
 				else
 				{
-					num = 5;
-					player.addSurvive(2);
+					given = giftList.get(5);
+					player.addSurvive(given.getValue());
 				}
 				
-				System.out.println("You received a " + giftList.get(num).getName() + " from your sponsor.");
+				System.out.println("You received a " + given.getName() + " from your sponsor.");
 			}
 			
 			Day day = new Day(tributeList);
