@@ -109,25 +109,46 @@ public class Day
 		
 		if (player.getStatus() == false)
 		{
+			double val = Math.random();
 			if (player.getSurviving() > 8)
 			{
-				System.out.println("You find a lot of food.");
-				player.changeFood(3);
+				if(val<0.8)
+				{
+					System.out.println("You find a lot of food.");
+					player.changeFood(3);
+				}
+				else
+				{
+					System.out.println("You find some food.");
+					player.changeFood(2);
+				}
 			}
 			else if (player.getSurviving() > 5)
 			{
-				System.out.println("You find some food.");
-				player.changeFood(2);
+				if(val<0.2)
+				{
+					System.out.println("You find a lot of food.");
+					player.changeFood(3);
+				}
+				else if(val<0.8)
+				{
+					System.out.println("You find some food.");
+					player.changeFood(2);
+				}
+				else
+				{
+					System.out.println("You find a little bit of food.");
+					player.changeFood(1);
+				}
 			}
 			else if (player.getSurviving() > 2)
 			{
-				System.out.println("You find a little bit of food.");
-				player.changeFood(1);
-			}
-			else
-			{
-				val = Math.random();
-				if (val < 0.5)
+				if(val<0.5)
+				{
+					System.out.println("You find a little bit of food.");
+					player.changeFood(1);
+				}
+				else if(val<0.7)
 				{
 					System.out.println("You eat poison berries and die.");
 					player.updateStatus(true);
