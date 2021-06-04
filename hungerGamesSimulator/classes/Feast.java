@@ -18,6 +18,10 @@ private ArrayList<Tribute> tributeList;
 	
 	public void bloodbathChoices()
 	{
+		System.out.println("Tributes Remaining: " + tributeList.size());
+		System.out.println("Fighting: " + player.getFighting() + "/10");
+		System.out.println("Surviving: " + player.getSurviving() + "/10");
+		System.out.println("Food Level: " + player.getFood() + "/10");
 		int choice;
 		do
 		{
@@ -63,6 +67,10 @@ private ArrayList<Tribute> tributeList;
 	
 	public void feastChoices()
 	{
+		System.out.println("Tributes Remaining: " + tributeList.size());
+		System.out.println("Fighting: " + player.getFighting() + "/10");
+		System.out.println("Surviving: " + player.getSurviving() + "/10");
+		System.out.println("Food Level: " + player.getFood() + "/10");
 		boolean valid = false;
 		while(!valid)
 		{

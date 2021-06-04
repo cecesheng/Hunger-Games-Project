@@ -21,6 +21,9 @@ public class Day
 		do
 		{
 			Scanner in = new Scanner(System.in);
+			System.out.println("Tributes Remaining: " + tributeList.size());
+			System.out.println("Fighting: " + player.getFighting() + "/10");
+			System.out.println("Surviving: " + player.getSurviving() + "/10");
 			System.out.println("Food Level: " + player.getFood() + "/10");
 			System.out.println("What will you do today?");
 			System.out.println("[1] Hide");
