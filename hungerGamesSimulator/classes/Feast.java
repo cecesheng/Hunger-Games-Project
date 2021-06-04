@@ -18,8 +18,8 @@ private ArrayList<Tribute> tributeList;
 	
 	public void bloodbathChoices()
 	{
-		boolean valid = false;
-		while(!valid)
+		int choice;
+		do
 		{
 			Scanner in = new Scanner(System.in);
 			System.out.println("You see weapons and backpacks in the cornucopia. What will you do?");
@@ -27,32 +27,38 @@ private ArrayList<Tribute> tributeList;
 			System.out.println("[2] Run for a backpack");
 			System.out.println("[3] Look for a fight");
 			System.out.println("[4] Run away");
-			int choice = in.nextInt();
+			while(!in.hasNextInt())
+			{
+				System.out.println("Please enter a valid choice (either 1, 2, 3, or 4)");
+				in.next();
+			}
+			choice = in.nextInt();
 			if(choice==1)
 			{
-				valid = true;
 				weapon();
+				break;
 			}
 			else if(choice==2)
 			{
-				valid = true;
 				backpack();
+				break;
 			}
 			else if(choice==3)
 			{
-				valid = true;
 				fight();
+				break;
 			}
 			else if(choice==4)
 			{
-				valid = true;
 				run();
+				break;
 			}
 			else
 			{
-				System.out.println("Please enter a valid game choice.");
+				System.out.println("Please enter a valid choice (either 1, 2, 3, or 4).");
 			}
 		}
+		while(choice == (int) choice);
 	}
 	
 	public void feastChoices()
