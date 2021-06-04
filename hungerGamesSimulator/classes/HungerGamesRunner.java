@@ -57,6 +57,7 @@ public class HungerGamesRunner
 		bloodbath.bloodbathChoices();
 		bloodbath.killTributes();
 		bloodbath.showDead(1);
+		System.out.println("Number of Tributes Left: " + tributeList.size());
 		
 		System.out.println("");
 		
@@ -73,10 +74,13 @@ public class HungerGamesRunner
 			}
 			
 			Day day = new Day(tributeList);
+			System.out.println("Fighting: " + player.getFighting() + "/10");
+			System.out.println("Surviving: " + player.getSurviving() + "/10");
 			day.choices();
 			day.getHungry();
 			day.killTributes();
 			day.showDead(dayCount);
+			System.out.println("Number of Tributes Left: " + tributeList.size());
 			dayCount++;
 			System.out.println("");
 		}
@@ -88,6 +92,7 @@ public class HungerGamesRunner
 			feast.feastChoices();
 			feast.killTributes();
 			feast.showDead(dayCount);
+			System.out.println("Number of Tributes Left: " + tributeList.size());
 		}
 		
 		System.out.println("");
@@ -104,9 +109,12 @@ public class HungerGamesRunner
 			}
 			
 			Day day = new Day(tributeList);
+			System.out.println("Fighting: " + player.getFighting() + "/10");
+			System.out.println("Surviving: " + player.getSurviving() + "/10");
 			day.choices();
 			day.getHungry();
 			day.showDead(dayCount);
+			System.out.println("Number of Tributes Left: " + tributeList.size());
 		}
 		
 		if (player.getStatus() == false)
