@@ -155,6 +155,10 @@ private ArrayList<Tribute> tributeList;
 	public void killTributes()
 	{
 		int numDead = (int)(Math.random() * 4) + 2;
+		if (tributeList.size() < numDead)
+		{
+			numDead = tributeList.size() - 2;
+		}
 		
 		while (numDead > 0)
 		{
