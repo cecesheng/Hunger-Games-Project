@@ -12,7 +12,7 @@ public class HungerGamesRunner
 		System.out.println("You have been selected as our tribute from District 12.");
 		System.out.println("Your goal is to be the last tribute standing.");
 		System.out.println("In order to do so, you will need to build up your fighting and survival abilities and make sure your food bar never gets to 0.");
-		System.out.println("Every day, you will be given a choice of what to do. Choose wisely.");
+		System.out.println("Every day, you will be given a choice of what to do. Type the number that corresponds with your choice and click enter to make your selection. Choose wisely.");
 		System.out.println("Your three days of training begin now. Good luck!");
 		
 		// create list of tributes
