@@ -109,10 +109,10 @@ public class Day
 		
 		if (player.getStatus() == false)
 		{
-			double val = Math.random();
+			double rand = Math.random();
 			if (player.getSurviving() > 8)
 			{
-				if(val<0.8)
+				if(rand<0.8)
 				{
 					System.out.println("You find a lot of food.");
 					player.changeFood(3);
@@ -125,12 +125,12 @@ public class Day
 			}
 			else if (player.getSurviving() > 5)
 			{
-				if(val<0.2)
+				if(rand<0.2)
 				{
 					System.out.println("You find a lot of food.");
 					player.changeFood(3);
 				}
-				else if(val<0.8)
+				else if(rand<0.8)
 				{
 					System.out.println("You find some food.");
 					player.changeFood(2);
@@ -143,12 +143,12 @@ public class Day
 			}
 			else if (player.getSurviving() > 2)
 			{
-				if(val<0.5)
+				if(rand<0.5)
 				{
 					System.out.println("You find a little bit of food.");
 					player.changeFood(1);
 				}
-				else if(val<0.7)
+				else if(rand<0.7)
 				{
 					System.out.println("You eat poison berries and die.");
 					player.updateStatus(true);
