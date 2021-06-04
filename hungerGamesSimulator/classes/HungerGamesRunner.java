@@ -106,7 +106,6 @@ public class HungerGamesRunner
 			Day day = new Day(tributeList);
 			day.choices();
 			day.getHungry();
-			day.killTributes();
 			day.showDead(dayCount);
 		}
 		
