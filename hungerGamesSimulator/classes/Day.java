@@ -17,28 +17,35 @@ public class Day
 	
 	public void choices()
 	{
-		Scanner in = new Scanner(System.in);
-		System.out.println("Food Level: " + player.getFood() + "/10");
-		System.out.println("What will you do today?");
-		System.out.println("[1] Hide");
-		System.out.println("[2] Search for Food");
-		System.out.println("[3] Look for a Fight");
-		int choice = in.nextInt();
-		if(choice==1)
+		boolean valid = false;
+		while(!valid)
 		{
-			hide();
-		}
-		else if(choice==2)
-		{
-			food();
-		}
-		else if(choice==3)
-		{
-			fight();
-		}
-		else
-		{
-			System.out.println("Please enter a valid choice.");
+			Scanner in = new Scanner(System.in);
+			System.out.println("Food Level: " + player.getFood() + "/10");
+			System.out.println("What will you do today?");
+			System.out.println("[1] Hide");
+			System.out.println("[2] Search for Food");
+			System.out.println("[3] Look for a Fight");
+			int choice = in.nextInt();
+			if(choice==1)
+			{
+				hide();
+				valid = true;
+			}
+			else if(choice==2)
+			{
+				food();
+				valid = true;
+			}
+			else if(choice==3)
+			{
+				fight();
+				valid = true;
+			}
+			else
+			{
+				System.out.println("Please enter a valid choice (either 1, 2, or 3)");
+			}	
 		}
 	}
 	

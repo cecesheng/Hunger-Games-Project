@@ -18,63 +18,79 @@ private ArrayList<Tribute> tributeList;
 	
 	public void bloodbathChoices()
 	{
-		Scanner in = new Scanner(System.in);
-		System.out.println("You see weapons and backpacks in the cornucopia. What will you do?");
-		System.out.println("[1] Run for a weapon");
-		System.out.println("[2] Run for a backpack");
-		System.out.println("[3] Look for a fight");
-		System.out.println("[4] Run away");
-		int choice = in.nextInt();
-		if(choice==1)
+		boolean valid = false;
+		while(!valid)
 		{
-			weapon();
-		}
-		else if(choice==2)
-		{
-			backpack();
-		}
-		else if(choice==3)
-		{
-			fight();
-		}
-		else if(choice==4)
-		{
-			run();
-		}
-		else
-		{
-			System.out.println("Please enter a valid game choice.");
+			Scanner in = new Scanner(System.in);
+			System.out.println("You see weapons and backpacks in the cornucopia. What will you do?");
+			System.out.println("[1] Run for a weapon");
+			System.out.println("[2] Run for a backpack");
+			System.out.println("[3] Look for a fight");
+			System.out.println("[4] Run away");
+			int choice = in.nextInt();
+			if(choice==1)
+			{
+				valid = true;
+				weapon();
+			}
+			else if(choice==2)
+			{
+				valid = true;
+				backpack();
+			}
+			else if(choice==3)
+			{
+				valid = true;
+				fight();
+			}
+			else if(choice==4)
+			{
+				valid = true;
+				run();
+			}
+			else
+			{
+				System.out.println("Please enter a valid game choice.");
+			}
 		}
 	}
 	
 	public void feastChoices()
 	{
-		Scanner in = new Scanner(System.in);
-		System.out.println("The Gamemakers have decided to throw a feast. What will you do?");
-		System.out.println("[1] Run for a weapon");
-		System.out.println("[2] Run for a backpack");
-		System.out.println("[3] Look for a fight");
-		System.out.println("[4] Don't go to the feast");
-		int choice = in.nextInt();
-		if(choice==1)
+		boolean valid = false;
+		while(!valid)
 		{
-			weapon();
-		}
-		else if(choice==2)
-		{
-			backpack();
-		}
-		else if(choice==3)
-		{
-			fight();
-		}
-		else if(choice==4)
-		{
-			run();
-		}
-		else
-		{
-			System.out.println("Please enter a valid game choice.");
+			Scanner in = new Scanner(System.in);
+			System.out.println("The Gamemakers have decided to throw a feast. What will you do?");
+			System.out.println("[1] Run for a weapon");
+			System.out.println("[2] Run for a backpack");
+			System.out.println("[3] Look for a fight");
+			System.out.println("[4] Don't go to the feast");
+			int choice = in.nextInt();
+			if(choice==1)
+			{
+				weapon();
+				valid = true;
+			}
+			else if(choice==2)
+			{
+				backpack();
+				valid = true;
+			}
+			else if(choice==3)
+			{
+				fight();
+				valid = true;
+			}
+			else if(choice==4)
+			{
+				run();
+				valid = true;
+			}
+			else
+			{
+				System.out.println("Please enter a valid game choice.");
+			}
 		}
 	}
 	

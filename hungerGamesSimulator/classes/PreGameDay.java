@@ -15,19 +15,29 @@ public class PreGameDay extends Day
 	
 	public void choices()
 	{
-		Scanner in = new Scanner(System.in);
-		System.out.println("Fighting: " + player.getFighting() + "/10");
-		System.out.println("Surviving: " + player.getSurviving() + "/10");
-		System.out.println("[1] Improve Fighting Ability");
-		System.out.println("[2] Improve Survival Ability");
-		int choice = in.nextInt();
-		if(choice==1)
+		boolean valid = false;
+		while(!valid)
 		{
-			player.addFight(2);
-		}
-		else if(choice==2)
-		{
-			player.addSurvive(3);
+			Scanner in = new Scanner(System.in);
+			System.out.println("Fighting: " + player.getFighting() + "/10");
+			System.out.println("Surviving: " + player.getSurviving() + "/10");
+			System.out.println("[1] Improve Fighting Ability");
+			System.out.println("[2] Improve Survival Ability");
+			int choice = in.nextInt();
+			if(choice==1)
+			{
+				player.addFight(2);
+				valid = true;
+			}
+			else if(choice==2)
+			{
+				player.addSurvive(3);
+				valid = true;
+			}
+			else
+			{
+				System.out.println("Please enter a valid choice.");
+			}
 		}
 	}
 }
