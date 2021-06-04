@@ -92,7 +92,7 @@ public class HungerGamesRunner
 		
 		System.out.println("");
 		
-		while (tributeList.size() > 1)
+		while (player.getStatus() == false && tributeList.size() > 1)
 		{
 			dayCount++;
 			System.out.println("Day " + dayCount);
