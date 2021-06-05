@@ -1,27 +1,32 @@
 package classes;
-
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * A day where the gamemakers host a feast.
+ */
 public class Feast extends Day
 {	
-private Tribute player;
-private ArrayList<Tribute> tributeList;
+	private Tribute player; //a player (tribute) in the Hunger Games
+	private ArrayList<Tribute> tributeList; //a list of all players (tributes) in the Hunger Games
 
+	/**
+	 * Constructs a feast by calling super Day constructor with parameter of tributeList.
+	 * Initializes player with Tribute at last index of tributeList.
+	 * @param tributeList
+	 */
 	public Feast(ArrayList<Tribute> tributeList)
 	{
 		super(tributeList);
 		this.tributeList = tributeList;
 		player = tributeList.get(tributeList.size() - 1);
 	}
-	
+	/**
+	 * Prints out what choices a tribute has on the bloodbath day. Calls appropriate methods according to user input.
+	 */
 	public void bloodbathChoices()
 	{
-		System.out.println("Tributes Remaining: " + tributeList.size());
-		System.out.println("Fighting: " + player.getFighting() + "/10");
-		System.out.println("Surviving: " + player.getSurviving() + "/10");
-		System.out.println("Food Level: " + player.getFood() + "/10");
 		int choice;
 		do
 		{
@@ -64,13 +69,11 @@ private ArrayList<Tribute> tributeList;
 		}
 		while(choice == (int) choice);
 	}
-	
+	/**
+	 * Prints out what choices a tribute has on the feast day. Calls appropriate methods according to user input.
+	 */
 	public void feastChoices()
 	{
-		System.out.println("Tributes Remaining: " + tributeList.size());
-		System.out.println("Fighting: " + player.getFighting() + "/10");
-		System.out.println("Surviving: " + player.getSurviving() + "/10");
-		System.out.println("Food Level: " + player.getFood() + "/10");
 		boolean valid = false;
 		while(!valid)
 		{
@@ -107,7 +110,10 @@ private ArrayList<Tribute> tributeList;
 			}
 		}
 	}
-	
+	/**
+	 * 80% chance of calling method fight().
+	 * If player is still alive, calls method addFight(4)
+	 */
 	public void weapon()
 	{
 		double val = Math.random();
@@ -122,7 +128,10 @@ private ArrayList<Tribute> tributeList;
 			player.addFight(4);
 		}
 	}
-	
+	/**
+	 * 80% chance of calling method fight().
+	 * If player is still alive, called method addSurvive(2).
+	 */
 	public void backpack()
 	{
 		double val = Math.random();
@@ -137,7 +146,9 @@ private ArrayList<Tribute> tributeList;
 			player.addSurvive(2);
 		}
 	}
-	
+	/**
+	 * 10% chance of calling method fight().
+	 */
 	public void run()
 	{
 		double val = Math.random();
@@ -151,14 +162,13 @@ private ArrayList<Tribute> tributeList;
 			System.out.println("You successfully run away.");
 		}
 	}
-	
+	/**
+	 * Gets number between 1 and 3
+	 * Loops through tributeList the number of times and sets tribute with the lowest fighting stat to dead.
+	 */
 	public void killTributes()
 	{
-		int numDead = (int)(Math.random() * 4) + 2;
-		if (tributeList.size() < numDead)
-		{
-			numDead = tributeList.size() - 2;
-		}
+		int numDead = (int)(Math.random() * 3) + 1;
 		
 		while (numDead > 0)
 		{

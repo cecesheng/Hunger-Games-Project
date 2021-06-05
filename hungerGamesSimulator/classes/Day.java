@@ -1,35 +1,38 @@
 package classes;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-
+/**
+ * A day in the Hunger Games.
+ */
 public class Day 
 {
-	private Tribute player;
-	private ArrayList<Tribute> tributeList;
+	private Tribute player; //a player (tribute) in the Hunger Games
+	private ArrayList<Tribute> tributeList; //a list of all players (tributes) in the Hunger Games
 	
+	/**
+	 * Constructs a Day in the Hunger Games. Initializes player with Tribute at last index of tributeList.
+	 * @param list an ArrayList of tributes
+	 */
 	public Day(ArrayList<Tribute> list)
 	{
 		tributeList = list;
 		player = tributeList.get(tributeList.size()-1);
 	}
-	
+	/**
+	 * Prints out what choices a tribute has each day in the Hunger Games. Calls appropriate methods according to user input.
+	 */
 	public void choices()
 	{
+		System.out.println("What will you do today?");
+		System.out.println("[1] Hide");
+		System.out.println("[2] Search for Food");
+		System.out.println("[3] Look for a Fight");
 		int choice;
 		do
 		{
 			Scanner in = new Scanner(System.in);
-			System.out.println("Tributes Remaining: " + tributeList.size());
-			System.out.println("Fighting: " + player.getFighting() + "/10");
-			System.out.println("Surviving: " + player.getSurviving() + "/10");
-			System.out.println("Food Level: " + player.getFood() + "/10");
-			System.out.println("What will you do today?");
-			System.out.println("[1] Hide");
-			System.out.println("[2] Search for Food");
-			System.out.println("[3] Look for a Fight");
-			while(!in.hasNextInt())
+			while(!in.hasNextInt()) //Protects against non-integer input
 			{
 				System.out.println("Please enter a valid choice (either 1, 2, or 3)");
 				in.next();
@@ -52,11 +55,16 @@ public class Day
 			}
 			else
 			{
-				System.out.println("Please enter a valid choice (either 1, 2, or 3)");
+				System.out.println("Please enter a valid choice (either 1, 2, or 3)"); //Protects against int input out of [1,3] range
 			}
 		}
 		while(choice == (int) choice);
 	}
+	/**
+	 * Picks a random number of 0-2 to determine the number of tributes to die.
+	 * Ranks the tributeList based on the average of fighting and surviving stats.
+	 * Sets the 0-2 tributes with the lowest stat’s statuses as dead
+	 */
 	public void killTributes()
 	{
 		int numDead = (int)(3*Math.random());
@@ -87,9 +95,13 @@ public class Day
 				}
 			}
 		}
-		
 	}
-	
+	/**
+	 * Create ArrayList<Tribute> of dead tributes.
+	 * Loop through tributeList, call getStatus() for every tribute, if true, then add tribute to dead array and remove from tributeList.
+	 * Print all tributes in dead array using for loop.
+	 * @param dayCount the number of days that have passed
+	 */
 	public void showDead(int dayCount)
 	{
 		ArrayList<Tribute> dead = new ArrayList<Tribute>();
@@ -108,12 +120,24 @@ public class Day
 			System.out.println("District " + dead.get(i).getDistrict());
 		}
 	}
-	
+	/**
+	 * Decreases player’s food bar by 2 by calling changeFood().
+	 * If player's food is 0 or lower, updates status to dead.
+	 */
 	public void getHungry()
 	{
 		player.changeFood(-2);
+		if(player.getFood()<=0)
+		{
+			player.updateStatus(true);
+			System.out.println("You died of hunger.");
+		}
 	}
-	
+	/**
+	 * 20% chance of calling method fight()
+	 * If player is still alive, finds amounts of food based on survival skill 
+	 * (chance of finding more food is greater with higher survival skill)
+	 */
 	public void food()
 	{
 		double val = Math.random();
@@ -177,7 +201,12 @@ public class Day
 		
 		System.out.println("Food Level: " + player.getFood() + "/10");
 	}
-	
+	/**
+	 * Gets random Tribute from tributeList
+	 * If player’s fighting > random’s fighting, random becomes dead
+	 * If player’s fighting < random’s fighting, player becomes dead
+	 * If player’s fighting = random’s fighting, 50% chance of player becoming dead and 50% chance of random becoming dead
+	 */
 	public void fight()
 	{
 		int randNum = (int)(Math.random()*(tributeList.size()-1));
@@ -212,7 +241,9 @@ public class Day
 			}
 		}
 	}
-
+	/**
+	 * Chance to call fight method based on random value and player’s surviving value.
+	 */
 	public void hide()
 	{
 		double val = Math.random();

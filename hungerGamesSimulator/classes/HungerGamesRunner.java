@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class HungerGamesRunner 
 {
@@ -12,7 +13,7 @@ public class HungerGamesRunner
 		System.out.println("You have been selected as our tribute from District 12.");
 		System.out.println("Your goal is to be the last tribute standing.");
 		System.out.println("In order to do so, you will need to build up your fighting and survival abilities and make sure your food bar never gets to 0.");
-		System.out.println("Every day, you will be given a choice of what to do. Type the number that corresponds with your choice and click enter to make your selection. Choose wisely.");
+		System.out.println("Every day, you will be given a choice of what to do. Choose wisely.");
 		System.out.println("Your three days of training begin now. Good luck!");
 		
 		// create list of tributes
@@ -35,83 +36,158 @@ public class HungerGamesRunner
 		
 		System.out.println("");
 		
-		// training days
-		for (int i = 1; i <= 3; i++)
+		//training days
+		boolean condition = false;
+		int i=1;
+		while(!condition)
 		{
-			System.out.println("Day " + i + " of training");
-			PreGameDay day = new PreGameDay(tributeList);
-			day.choices();
+			Scanner in = new Scanner(System.in);
+			System.out.println("Press any letter then the enter key to continue.");
+			if(in.hasNext())
+			{
+				System.out.println("-----------------------------------------------------------");
+				if(i==1)
+				{
+					System.out.println("-----------------------------------------------------------");
+				}
+				if(i==3)
+				{
+					condition = true;
+				}
+				
+				System.out.println("Day " + i + " of training");
+				System.out.println("");
+				PreGameDay day = new PreGameDay(tributeList);
+				day.choices();
+				System.out.println("");
+				i++;
+			}
 		}
 		
-		System.out.println("Fighting: " + player.getFighting() + "/10");
-		System.out.println("Surviving: " + player.getSurviving() + "/10");
-		
-		System.out.println("");
-		
-		System.out.println("Now you are ready for the Hunger Games. Good luck, and may the odds be ever in your favor.");
-		
-		System.out.println("");
-		
-		// bloodbath
-		System.out.println("Day 1");
-		Feast bloodbath = new Feast(tributeList);
-		bloodbath.bloodbathChoices();
-		bloodbath.killTributes();
-		bloodbath.showDead(1);
-		
-		System.out.println("");
-		
-		// game days
-		int dayCount = 2;
-		while (player.getStatus() == false && tributeList.size() > 4)
+		//end of training message
+		Scanner in1 = new Scanner(System.in);
+		System.out.println("Press any letter then the enter key to continue.");
+		if(in1.hasNext())
 		{
-			System.out.println("Day " + dayCount);
-			GiftList gifts = new GiftList(tributeList.get(tributeList.size() - 1));
-			double giftChance = Math.random();
-			if (giftChance < 0.15)
-			{
-				gifts.getGift();
-			}
-			
-			Day day = new Day(tributeList);
-			day.choices();
-			day.getHungry();
-			day.killTributes();
-			day.showDead(dayCount);
-			dayCount++;
+			System.out.println("-----------------------------------------------------------");
+			System.out.println("Your Final Stats:");
+			System.out.println("Fighting: " + player.getFighting() + "/10");
+			System.out.println("Surviving: " + player.getSurviving() + "/10");
+			System.out.println("Food: " + player.getFood() + "/10");
+			System.out.println("");
+			System.out.println("Now you are ready for the Hunger Games. Good luck, and may the odds be ever in your favor.");
 			System.out.println("");
 		}
 		
+		//bloodbath
+		int dayCount = 1;
+		Scanner in2 = new Scanner(System.in);
+		System.out.println("Press any letter then the enter key to continue.");
+		if(in2.hasNext())
+		{
+			System.out.println("-----------------------------------------------------------");
+			System.out.println("-----------------------------------------------------------");
+			System.out.println("Day " + dayCount);
+			Feast bloodbath = new Feast(tributeList);
+			bloodbath.bloodbathChoices();
+			bloodbath.getHungry();
+			bloodbath.killTributes();
+			System.out.println("");
+			bloodbath.showDead(1);
+			System.out.println("Number of Tributes Left: " + tributeList.size());
+			System.out.println("");
+		}
+		
+		//game days
+		dayCount = 2;
+		while(player.getStatus() == false && tributeList.size() > 4)
+		{
+			Scanner in3 = new Scanner(System.in);
+			System.out.println("Press any letter then the enter key to continue.");
+			if(in3.hasNext())
+			{
+				System.out.println("-----------------------------------------------------------");
+				System.out.println("Day " + dayCount);
+				GiftList gifts = new GiftList(tributeList.get(tributeList.size() - 1));
+				double giftChance = Math.random();
+				if (giftChance < 0.15)
+				{
+					gifts.getGift();
+				}
+				
+				Day day = new Day(tributeList);
+				System.out.println("Your Stats:");
+				System.out.println("Fighting: " + player.getFighting() + "/10");
+				System.out.println("Surviving: " + player.getSurviving() + "/10");
+				System.out.println("Food Level: " + player.getFood() + "/10");
+				System.out.println("");
+				day.choices();
+				day.getHungry();
+				day.killTributes();
+				System.out.println("");
+				day.showDead(dayCount);
+				System.out.println("Number of Tributes Left: " + tributeList.size());
+				dayCount++;
+				
+				System.out.println("");
+			}
+		}
+
 		// feast
 		if (player.getStatus() == false && tributeList.size() <= 4)
 		{
-			System.out.println("Day " + dayCount);
-			Feast feast = new Feast(tributeList);
-			feast.feastChoices();
-			feast.killTributes();
-			feast.showDead(dayCount);
+			Scanner in4 = new Scanner(System.in);
+			System.out.println("Press any letter then the enter key to continue.");
+			if(in4.hasNext())
+			{
+				System.out.println("-----------------------------------------------------------");
+				System.out.println("Day " + dayCount);
+				Feast feast = new Feast(tributeList);
+				feast.feastChoices();
+				feast.getHungry();
+				feast.killTributes();
+				System.out.println("");
+				feast.showDead(dayCount);
+				System.out.println("Number of Tributes Left: " + tributeList.size());
+			}
 		}
 		
-		System.out.println("");
-		
+		//post-feast
 		while (player.getStatus() == false && tributeList.size() > 1)
 		{
-			
-			dayCount++;
-			System.out.println("Day " + dayCount);
-			GiftList gifts = new GiftList(tributeList.get(tributeList.size() - 1));
-			double giftChance = Math.random();
-			if (giftChance < 0.15)
+			Scanner in5 = new Scanner(System.in);
+			System.out.println("Press any letter then the enter key to continue.");
+			if(in5.hasNext())
 			{
-				gifts.getGift();
+				System.out.println("-----------------------------------------------------------");
+				System.out.println("Day " + dayCount);
+				GiftList gifts = new GiftList(tributeList.get(tributeList.size() - 1));
+				double giftChance = Math.random();
+				if (giftChance < 0.15)
+				{
+					gifts.getGift();
+				}
+				
+				Day day = new Day(tributeList);
+				System.out.println("Your Stats:");
+				System.out.println("Fighting: " + player.getFighting() + "/10");
+				System.out.println("Surviving: " + player.getSurviving() + "/10");
+				System.out.println("Food Level: " + player.getFood() + "/10");
+				System.out.println("");
+				day.choices();
+				day.getHungry();
+				System.out.println("");
+				day.showDead(dayCount);
+				System.out.println("Number of Tributes Left: " + tributeList.size());
+				dayCount++;
+				
+				System.out.println("");
 			}
-			
-			Day day = new Day(tributeList);
-			day.choices();
-			day.getHungry();
-			day.showDead(dayCount);
-			System.out.println("");
 		}
+		
+		//end message
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("-----------------------------------------------------------");
 		
 		if (player.getStatus() == false)
 		{
@@ -124,6 +200,7 @@ public class HungerGamesRunner
 		
 	}
 	
+	//main method
 	public static void main(String[] args)
 	{
 		HungerGamesRunner game = new HungerGamesRunner();
