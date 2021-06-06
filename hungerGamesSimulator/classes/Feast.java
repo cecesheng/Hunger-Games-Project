@@ -27,7 +27,7 @@ public class Feast extends Day
 	 */
 	public void bloodbathChoices()
 	{
-		System.out.println("You see weapons and backpacks in the cornucopia. What will you do?");
+		System.out.println("You see weapons and backpacks in the cornucopia. What will you do? (Press 1, 2, 3, or 4 to choose)");
 		System.out.println("[1] Run for a weapon");
 		System.out.println("[2] Run for a backpack");
 		System.out.println("[3] Look for a fight");

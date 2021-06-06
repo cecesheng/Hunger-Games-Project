@@ -24,7 +24,7 @@ public class Day
 	 */
 	public void choices()
 	{
-		System.out.println("What will you do today?");
+		System.out.println("What will you do today? (Press 1, 2, or 3 to choose)");
 		System.out.println("[1] Hide");
 		System.out.println("[2] Search for Food");
 		System.out.println("[3] Look for a Fight");
