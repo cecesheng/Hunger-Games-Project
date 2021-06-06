@@ -27,15 +27,15 @@ public class Feast extends Day
 	 */
 	public void bloodbathChoices()
 	{
+		System.out.println("You see weapons and backpacks in the cornucopia. What will you do?");
+		System.out.println("[1] Run for a weapon");
+		System.out.println("[2] Run for a backpack");
+		System.out.println("[3] Look for a fight");
+		System.out.println("[4] Run away");
 		int choice;
 		do
 		{
 			Scanner in = new Scanner(System.in);
-			System.out.println("You see weapons and backpacks in the cornucopia. What will you do?");
-			System.out.println("[1] Run for a weapon");
-			System.out.println("[2] Run for a backpack");
-			System.out.println("[3] Look for a fight");
-			System.out.println("[4] Run away");
 			while(!in.hasNextInt())
 			{
 				System.out.println("Please enter a valid choice (either 1, 2, 3, or 4)");
@@ -74,41 +74,43 @@ public class Feast extends Day
 	 */
 	public void feastChoices()
 	{
-		boolean valid = false;
-		while(!valid)
+		System.out.println("The Gamemakers have decided to throw a feast. What will you do? (Press 1, 2, 3, or 4 to choose)");
+		System.out.println("[1] Run for a weapon");
+		System.out.println("[2] Run for a backpack");
+		System.out.println("[3] Look for a fight");
+		System.out.println("[4] Don't go to the feast");
+		int choice;
+		do
 		{
 			Scanner in = new Scanner(System.in);
-			System.out.println("The Gamemakers have decided to throw a feast. What will you do?");
-			System.out.println("[1] Run for a weapon");
-			System.out.println("[2] Run for a backpack");
-			System.out.println("[3] Look for a fight");
-			System.out.println("[4] Don't go to the feast");
-			int choice = in.nextInt();
+			
+			choice = in.nextInt();
 			if(choice==1)
 			{
 				weapon();
-				valid = true;
+				break;
 			}
 			else if(choice==2)
 			{
 				backpack();
-				valid = true;
+				break;
 			}
 			else if(choice==3)
 			{
 				fight();
-				valid = true;
+				break;
 			}
 			else if(choice==4)
 			{
 				run();
-				valid = true;
+				break;
 			}
 			else
 			{
-				System.out.println("Please enter a valid game choice.");
+				System.out.println("Please enter a valid choice (either 1, 2, 3, or 4).");
 			}
 		}
+		while((int)choice == choice);
 	}
 	/**
 	 * 80% chance of calling method fight().
