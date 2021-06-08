@@ -67,33 +67,19 @@ public class Day
 	 */
 	public void killTributes()
 	{
-		int numDead = (int)(3*Math.random());
-		ArrayList<Integer> totalStats = new ArrayList<Integer>();
-		for(int i=0; i<tributeList.size()-1; i++)
+		int numDead = (int)(Math.random() * 3);
+		while (numDead > 0)
 		{
-			Tribute chosen = tributeList.get(i);
-			totalStats.add(chosen.getFighting()+chosen.getSurviving());
-		}
-		Collections.sort(totalStats);
-		for(int i=0; i<numDead; i++)
-		{
-			int index = 0;
-			boolean found = false;
-			while(!found)
+			int min = 0;
+			for (int i = 1; i < tributeList.size() - 1; i++)
 			{
-				Tribute current = tributeList.get(index);
-				boolean status = current.getStatus();
-				int sum = current.getFighting()+current.getSurviving();
-				if(!status && sum==totalStats.get(i))
+				if (tributeList.get(i).getFighting() + tributeList.get(i).getSurviving() < tributeList.get(min).getFighting()+tributeList.get(min).getSurviving())
 				{
-					current.updateStatus(true);
-					found=true;
-				}
-				else
-				{
-					index++;
+					min = i;
 				}
 			}
+			tributeList.get(min).updateStatus(true);
+			numDead--;
 		}
 	}
 	/**
