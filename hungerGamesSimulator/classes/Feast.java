@@ -165,8 +165,8 @@ public class Feast extends Day
 		}
 	}
 	/**
-	 * Gets number between 1 and 3
-	 * Loops through tributeList the number of times and sets tribute with the lowest fighting stat to dead.
+	 * Gets number between 1 and the number of alive tributes-1
+	 * Loops through tributeList that number of times and sets tribute with the lowest fighting stat to dead each time.
 	 */
 	public void killTributes()
 	{
