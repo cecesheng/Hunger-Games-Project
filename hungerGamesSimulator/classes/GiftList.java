@@ -19,8 +19,8 @@ public class GiftList
 		giftList.add(new Gift("beef", 3));
 		giftList.add(new Gift("crackers", 1));
 		giftList.add(new Gift("knives", 3));
-		giftList.add(new Gift("spear", 2));
-		giftList.add(new Gift("spile", 3));
+		giftList.add(new Gift("a spear", 2));
+		giftList.add(new Gift("a spile", 3));
 		giftList.add(new Gift("rope", 2));
 	}
 	/**
@@ -62,6 +62,6 @@ public class GiftList
 			player.addSurvive(given.getValue());
 		}
 			
-		System.out.println("You received a " + given.getName() + " from your sponsor.");
+		System.out.println("You received " + given.getName() + " from your sponsor.");
 	}
 }

@@ -172,6 +172,11 @@ public class Feast extends Day
 	{
 		int numDead = (int)(Math.random() * 3) + 1;
 		
+		if (tributeList.size() <= 4 && numDead == tributeList.size() - 1)
+		{
+			numDead -= 1;
+		}
+		
 		while (numDead > 0)
 		{
 			int min = 0;
