@@ -170,13 +170,15 @@ public class Feast extends Day
 	 */
 	public void killTributes()
 	{
-		int numDead = (int)(Math.random() * 3) + 1;
-		
-		if (tributeList.size() <= 4 && numDead == tributeList.size() - 1)
+		int count = 0;
+		for(Tribute player:tributeList)
 		{
-			numDead -= 1;
+			if(!player.getStatus())
+			{
+				count++;
+			}
 		}
-		
+		int numDead = (int)(Math.random() * (count-1)) + 1;
 		while (numDead > 0)
 		{
 			int min = 0;

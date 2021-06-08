@@ -58,7 +58,7 @@ public class Tribute
 		return district;
 	}
 	/**
-	 * Returns status (dead or alive) of tribute.
+	 * Returns status (dead or alive) of tribute. Returns true if dead, false if alive.
 	 * @return dead
 	 */
 	public boolean getStatus()
